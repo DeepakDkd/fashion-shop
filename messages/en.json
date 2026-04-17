@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "sarees": "Sarees",
+    "suits": "Suits / Chudidar",
+    "blouses": "Blouses",
+    "footwear": "Footwear",
+    "others": "Others",
+    "contact": "Contact",
+    "admin": "Admin",
+    "all_products": "All Products"
+  },
+  "home": {
+    "hero_title": "Fashion Made for You",
+    "hero_subtitle": "Sarees, Suits, Blouses & More",
+    "hero_cta": "Shop Now",
+    "featured_title": "Featured Products",
+    "new_arrivals": "New Arrivals",
+    "categories_title": "Categories",
+    "shop_info_title": "Visit Us",
+    "browse_all": "Browse All"
+  },
+  "product": {
+    "price": "Price",
+    "description": "Description",
+    "buy_whatsapp": "Buy on WhatsApp",
+    "inquire_whatsapp": "Inquire on WhatsApp",
+    "new_arrival": "New Arrival",
+    "featured": "Featured",
+    "in_stock": "In Stock",
+    "out_of_stock": "Out of Stock",
+    "similar_products": "Similar Products",
+    "images": "Images",
+    "share": "Share"
+  },
+  "categories": {
+    "all": "All",
+    "saree": "Saree",
+    "suit": "Suit / Chudidar",
+    "blouse": "Blouse",
+    "footwear": "Footwear",
+    "other": "Other"
+  },
+  "search": {
+    "placeholder": "Search products...",
+    "no_results": "No products found",
+    "results_for": "Results for"
+  },
+  "shop": {
+    "address_label": "Address",
+    "phone_label": "Phone",
+    "hours_label": "Hours",
+    "whatsapp_label": "WhatsApp"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "add_product": "Add New Product",
+    "edit_product": "Edit Product",
+    "delete_product": "Delete Product",
+    "products_list": "Products List",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete_confirm": "Are you sure you want to delete this product?",
+    "upload_image": "Upload Image",
+    "drag_drop": "Drag & drop or click to upload",
+    "name_hi": "Name (Hindi)",
+    "name_en": "Name (English)",
+    "desc_hi": "Description (Hindi)",
+    "desc_en": "Description (English)",
+    "price": "Price (₹)",
+    "category": "Category",
+    "featured": "Featured Product",
+    "new_arrival": "New Arrival",
+    "in_stock": "In Stock",
+    "total_products": "Total Products",
+    "product_saved": "Product saved!",
+    "product_deleted": "Product deleted!",
+    "loading": "Loading..."
+  },
+  "whatsapp": {
+    "message": "Hello! I'm interested in:\n*{name}*\nPrice: ₹{price}\nRef: {slug}\n\nPlease let me know about availability."
+  },
+  "footer": {
+    "tagline": "Premium Fashion for Women",
+    "rights": "All rights reserved"
+  },
+  "errors": {
+    "not_found": "Page not found",
+    "loading": "Loading...",
+    "generic": "Something went wrong"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "होम",
+    "products": "उत्पाद",
+    "sarees": "साड़ियाँ",
+    "suits": "सूट / चूड़ीदार",
+    "blouses": "ब्लाउज़",
+    "footwear": "जूते",
+    "others": "अन्य",
+    "contact": "संपर्क",
+    "admin": "एडमिन",
+    "all_products": "सभी उत्पाद"
+  },
+  "home": {
+    "hero_title": "आपके लिए बेहतरीन फैशन",
+    "hero_subtitle": "साड़ी, सूट, ब्लाउज़ और बहुत कुछ",
+    "hero_cta": "अभी खरीदारी करें",
+    "featured_title": "खास उत्पाद",
+    "new_arrivals": "नई आमद",
+    "categories_title": "श्रेणियाँ",
+    "shop_info_title": "हमसे मिलें",
+    "browse_all": "सभी देखें"
+  },
+  "product": {
+    "price": "कीमत",
+    "description": "विवरण",
+    "buy_whatsapp": "WhatsApp पर खरीदें",
+    "inquire_whatsapp": "WhatsApp पर पूछें",
+    "new_arrival": "नई आमद",
+    "featured": "खास",
+    "in_stock": "उपलब्ध",
+    "out_of_stock": "उपलब्ध नहीं",
+    "similar_products": "मिलते-जुलते उत्पाद",
+    "images": "तस्वीरें",
+    "share": "शेयर करें"
+  },
+  "categories": {
+    "all": "सभी",
+    "saree": "साड़ी",
+    "suit": "सूट / चूड़ीदार",
+    "blouse": "ब्लाउज़",
+    "footwear": "जूते",
+    "other": "अन्य"
+  },
+  "search": {
+    "placeholder": "उत्पाद खोजें...",
+    "no_results": "कोई उत्पाद नहीं मिला",
+    "results_for": "के लिए परिणाम"
+  },
+  "shop": {
+    "address_label": "पता",
+    "phone_label": "फोन",
+    "hours_label": "समय",
+    "whatsapp_label": "WhatsApp"
+  },
+  "admin": {
+    "dashboard": "डैशबोर्ड",
+    "add_product": "नया उत्पाद जोड़ें",
+    "edit_product": "उत्पाद संपादित करें",
+    "delete_product": "उत्पाद हटाएं",
+    "products_list": "उत्पाद सूची",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "delete_confirm": "क्या आप वाकई इस उत्पाद को हटाना चाहते हैं?",
+    "upload_image": "तस्वीर अपलोड करें",
+    "drag_drop": "यहाँ खींचें या क्लिक करें",
+    "name_hi": "नाम (हिंदी)",
+    "name_en": "नाम (अंग्रेजी)",
+    "desc_hi": "विवरण (हिंदी)",
+    "desc_en": "विवरण (अंग्रेजी)",
+    "price": "कीमत (₹)",
+    "category": "श्रेणी",
+    "featured": "खास उत्पाद",
+    "new_arrival": "नई आमद",
+    "in_stock": "उपलब्ध है",
+    "total_products": "कुल उत्पाद",
+    "product_saved": "उत्पाद सहेजा गया!",
+    "product_deleted": "उत्पाद हटाया गया!",
+    "loading": "लोड हो रहा है..."
+  },
+  "whatsapp": {
+    "message": "नमस्ते! मुझे यह उत्पाद चाहिए:\n*{name}*\nकीमत: ₹{price}\nRef: {slug}\n\nकृपया उपलब्धता बताएं।"
+  },
+  "footer": {
+    "tagline": "महिलाओं के लिए बेहतरीन फैशन",
+    "rights": "सर्वाधिकार सुरक्षित"
+  },
+  "errors": {
+    "not_found": "पृष्ठ नहीं मिला",
+    "loading": "लोड हो रहा है...",
+    "generic": "कुछ गलत हो गया"
+  }
+}
