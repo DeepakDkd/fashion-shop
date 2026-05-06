@@ -15,7 +15,7 @@ import {
     FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { signIn } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 import Link from "next/link"
 import { useRef, useState } from "react"
 import toast from 'react-hot-toast';
@@ -25,19 +25,26 @@ export function RegisterForm({
     ...props
 }: React.ComponentProps<"div">) {
  
+    const { data,status } = useSession();
+    console.log("session data data", data, "session status", status);
+    if (data) {
+        
+        console.log("session data in register form", data?.user.name);
+    }
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("email", email, "password", password);
-        if (!email || !password) {
+        console.log("email", email, "password", password, "name", name);
+        if (!email || !password || !name) {
             toast.error("Please fill in all fields");
             return;
         }
 
-        const res = axios.post("/api/auth/register", { email, password })
+        const res = axios.post("/api/auth/register", { email, password, name })
             .then((res:any) => {
                 toast.success("Registration successful! Please log in.")
             })
@@ -60,6 +67,16 @@ export function RegisterForm({
                 <CardContent>
                     <form onSubmit={handleSubmit}>
                         <FieldGroup>
+                            <Field>
+                                <FieldLabel htmlFor="name">Name</FieldLabel>
+                                <Input
+                                    id="name"
+                                    type="text"
+                                    placeholder="John Doe"
+                                    // required
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                            </Field>
                             <Field>
                                 <FieldLabel htmlFor="email">Email</FieldLabel>
                                 <Input

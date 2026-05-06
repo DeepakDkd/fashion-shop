@@ -4,6 +4,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { connectDB } from "@/lib/mongodb";
 import { User } from "@/models/User";
 import { UserRole } from "@/types/next-auth";
+import { getServerSession } from "next-auth";
+
 
 export const authOptions: NextAuthOptions = {
 
@@ -53,7 +55,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
 
-    async signIn({ user, account, profile,email :emailFromProvider }) {
+    async signIn({ user, account, profile }) {
       if (account?.provider != "google") {
         return true;
       }
@@ -74,9 +76,11 @@ export const authOptions: NextAuthOptions = {
         return true;
       }
 
+      // const googleProfile = profile as { email_verified?: boolean };
       // same email already exists --> link google account to that user
       existingUser = await User.findOne({ email });
-      if (existingUser && emailFromProvider?.verificationRequest) {
+      // if (existingUser && googleProfile.email_verified) {
+      if (existingUser ) {
         existingUser.googleId = googleId;
         existingUser.image = image || existingUser.image;
         if (!existingUser.name && name) {
@@ -126,3 +130,5 @@ export const authOptions: NextAuthOptions = {
     signIn: "/auth/login",
   },
 };
+
+export const getAuthSession = () => getServerSession(authOptions);

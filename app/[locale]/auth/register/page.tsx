@@ -3,7 +3,8 @@ import { RegisterForm } from "@/components/register-form";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function RegisterPage() {
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
+    console.log("session data data", session, "session status", status);
     if (session) {
         return <div>Welcome, {session.user.name}!</div>;
     }
