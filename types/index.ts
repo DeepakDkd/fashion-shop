@@ -1,3 +1,14 @@
+export interface IUser {
+  _id: string
+  name: string
+  email: string
+  password: string
+  googleId: string
+  image: string
+  role: 'customer' | 'admin'
+  createdAt: string
+  updatedAt: string
+}
 export interface IProduct {
   _id: string
   name_hi: string

@@ -10,7 +10,7 @@ const intlMiddleware = createMiddleware({
 
 export function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname
-
+console.log('Middleware triggered for path:', pathname)
   // Admin route protection
   if (pathname.includes('/admin')) {
     const auth = req.headers.get('authorization')
@@ -18,13 +18,14 @@ export function middleware(req: NextRequest) {
     const validAuth = 'Basic ' + Buffer.from(`admin:${adminPassword}`).toString('base64')
 
     if (auth !== validAuth) {
-      return new NextResponse('Authentication required', {
-        status: 401,
-        headers: {
-          'WWW-Authenticate': 'Basic realm="Fashion Shop Admin", charset="UTF-8"',
-          'Content-Type': 'text/plain',
-        },
-      })
+      // return new NextResponse('Authentication required', {
+      //   status: 401,
+      //   headers: {
+      //     'WWW-Authenticate': 'Basic realm="Fashion Shop Admin", charset="UTF-8"',
+      //     'Content-Type': 'text/plain',
+      //   },
+      // })
+      // return NextResponse.redirect(new URL(`${req.nextUrl.origin}/admin/login`, req.url))
     }
   }
 
