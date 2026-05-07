@@ -96,14 +96,25 @@ export const authOptions: NextAuthOptions = {
         name,
         image,
         googleId,
-        role: "admin"
+        role: "customer"
       })
       return true;
-
     },
 
     async jwt({ token, user }) {
+
+      if (!token.role && token.email) {
+
+        await connectDB();
+        const dbUser = await User.findOne({ email: token.email });
+        if (dbUser) {
+          token.id = dbUser._id.toString();
+          token.role = dbUser.role;
+        }
+      }
+
       if (user) {
+
         token.id = user.id;
         token.email = user.email;
         token.name = user.name;

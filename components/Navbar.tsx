@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
+import { Button } from './ui/button'
 
 interface NavbarProps {
   locale: 'hi' | 'en'
@@ -11,18 +13,20 @@ interface NavbarProps {
 const NAV_LINKS = {
   hi: [
     { label: 'होम', href: '/' },
+    { label: 'डैशबोर्ड', href: '/admin' },
     { label: 'साड़ी', href: '/category/saree' },
-    { label: 'सूट', href: '/category/suit' },
-    { label: 'ब्लाउज़', href: '/category/blouse' },
-    { label: 'जूते', href: '/category/footwear' },
+    // { label: 'सूट', href: '/category/suit' },
+    // { label: 'ब्लाउज़', href: '/category/blouse' },
+    // { label: 'जूते', href: '/category/footwear' },
     { label: 'सभी उत्पाद', href: '/products' },
   ],
   en: [
     { label: 'Home', href: '/' },
+    { label: 'Dashboard', href: '/admin' },
     { label: 'Sarees', href: '/category/saree' },
-    { label: 'Suits', href: '/category/suit' },
-    { label: 'Blouses', href: '/category/blouse' },
-    { label: 'Footwear', href: '/category/footwear' },
+    // { label: 'Suits', href: '/category/suit' },
+    // { label: 'Blouses', href: '/category/blouse' },
+    // { label: 'Footwear', href: '/category/footwear' },
     { label: 'All Products', href: '/products' },
   ],
 }
@@ -31,6 +35,11 @@ export default function Navbar({ locale }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
+  const session = useSession();
+
+  const isAdmin = session?.data?.user?.role === "admin";
+
+
 
   const switchLocale = () => {
     const newLocale = locale === 'hi' ? 'en' : 'hi'
@@ -40,6 +49,11 @@ export default function Navbar({ locale }: NavbarProps) {
   }
 
   const links = NAV_LINKS[locale]
+
+  const visibleLinks = links.filter((link) => {
+    if (link.href === "/admin" && !isAdmin) return false;
+    return true;
+  });
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -67,7 +81,7 @@ export default function Navbar({ locale }: NavbarProps) {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
-            {links.map((link) => (
+            {visibleLinks.map((link) => (
               <Link
                 key={link.href}
                 href={`/${locale}${link.href}`}
@@ -75,7 +89,9 @@ export default function Navbar({ locale }: NavbarProps) {
               >
                 {link.label}
               </Link>
-            ))}
+            )
+            )}
+
           </div>
 
           {/* Right side */}
@@ -89,7 +105,17 @@ export default function Navbar({ locale }: NavbarProps) {
               <span className="text-rose-400">↔</span>
               <span>{locale === 'hi' ? 'EN' : 'हिं'}</span>
             </button>
-
+            <Button variant="outline" size="sm" className='hidden md:flex'>
+              {session.data ? (
+                <Link href={`/${locale}/auth/login`} onClick={() => session.data && signOut({ callbackUrl: `/${locale}/auth/login` })}>
+                  {locale === 'hi' ? 'साइन आउट' : 'Sign Out'}
+                </Link>
+              ) : (
+                <Link href={`/${locale}/auth/login`}>
+                  {locale === 'hi' ? 'साइन इन' : 'Sign In'}
+                </Link>
+              )}
+            </Button>
             {/* Mobile menu button */}
             <button
               className="md:hidden p-2 text-gray-600 hover:text-rose-600"
@@ -109,7 +135,9 @@ export default function Navbar({ locale }: NavbarProps) {
         {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden border-t border-gray-100 py-3 space-y-1">
-            {links.map((link) => (
+
+
+            {visibleLinks.map((link) => (
               <Link
                 key={link.href}
                 href={`/${locale}${link.href}`}
@@ -118,7 +146,20 @@ export default function Navbar({ locale }: NavbarProps) {
               >
                 {link.label}
               </Link>
-            ))}
+            )
+            )}
+
+            <Button variant="outline" size="sm" className='flex md:hidden ml-2'>
+              {session.data ? (
+                <Link href={`/${locale}/auth/login`} onClick={() => session.data && signOut({ callbackUrl: `/${locale}/auth/login` })}>
+                  {locale === 'hi' ? 'साइन आउट' : 'Sign Out'}
+                </Link>
+              ) : (
+                <Link href={`/${locale}/auth/login`}>
+                  {locale === 'hi' ? 'साइन इन' : 'Sign In'}
+                </Link>
+              )}
+            </Button>
           </div>
         )}
       </div>

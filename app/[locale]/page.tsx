@@ -8,6 +8,8 @@ import ProductGrid from '@/components/ProductGrid'
 import ShopInfoSection from '@/components/ShopInfoSection'
 import NewArrivals from '@/components/NewArrivals'
 import { IProduct, IShopInfo } from '@/types'
+import { authOptions } from '@/lib/auth'
+import { getServerSession } from 'next-auth'
 
 async function getData(locale: string) {
   await connectDB()
@@ -27,6 +29,8 @@ export default async function HomePage({ params: { locale } }: { params: { local
   const t = await getTranslations('home')
   const { featuredProducts, newArrivals, shopInfo } = await getData(locale)
 
+  const  session  = await getServerSession(authOptions);
+  console.log("home page session", session);
   return (
     <div>
       <HeroSection locale={locale as 'hi' | 'en'} />

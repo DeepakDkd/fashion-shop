@@ -25,14 +25,14 @@ export async function middleware(req: NextRequest) {
 
   // Protected admin routes
   if (pathnameWithoutLocale.startsWith("/admin")) {
-
+    
     if (!token) {
       return NextResponse.redirect(
         new URL("/auth/login", req.url)
       );
     }
 
-
+    
     if (token.role !== "admin") {
       return NextResponse.redirect(
         new URL("/", req.url)
@@ -51,10 +51,10 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(
       new URL("/", req.url)
     );
-
+  
   }
 
-  // Continue intl middleware
+  //  Continue intl middleware
   return intlMiddleware(req);
 }
 

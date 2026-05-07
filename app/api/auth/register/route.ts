@@ -22,7 +22,7 @@ export async function POST(request: Request) {
             email,
             name,
             password,
-            role: "admin"
+            role: "customer"
         })
 
     
