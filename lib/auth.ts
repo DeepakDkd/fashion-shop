@@ -8,7 +8,7 @@ import { getServerSession } from "next-auth";
 
 
 export const authOptions: NextAuthOptions = {
-
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -33,18 +33,18 @@ export const authOptions: NextAuthOptions = {
         const user = await User.findOne({ email });
 
         if (!user) {
-          console.log(`[AUTH_ERROR_CREDENTIALS]: No user found with email ${email}`);
+
           throw new Error("User not found");
         }
 
         if (!user.password) {
-          console.log(`[AUTH_ERROR_CREDENTIALS]: User ${email} does not have a password hash`);
+
           throw new Error("This account does not support password login");
         }
 
         const isValid = await user.comparePassword(password);
         if (!isValid) {
-          console.log(`[AUTH_ERROR_CREDENTIALS]: Invalid password for email ${email}`);
+
           throw new Error("Invalid email or password");
         }
 
@@ -80,7 +80,7 @@ export const authOptions: NextAuthOptions = {
       // same email already exists --> link google account to that user
       existingUser = await User.findOne({ email });
       // if (existingUser && googleProfile.email_verified) {
-      if (existingUser ) {
+      if (existingUser) {
         existingUser.googleId = googleId;
         existingUser.image = image || existingUser.image;
         if (!existingUser.name && name) {
