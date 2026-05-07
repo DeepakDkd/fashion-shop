@@ -1,5 +1,5 @@
 import { HydratedDocument, Model, Schema, model, models } from "mongoose";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { IUser } from "@/types";
 
 
